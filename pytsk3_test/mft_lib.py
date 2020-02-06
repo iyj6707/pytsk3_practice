@@ -1,0 +1,50 @@
+HEADER = {
+    "ENTRY_HEADER": [
+        {"name": "signature",           "offset": 0x00, "size": 4, "format": "<4s"},
+        {"name": "fixup_array_offset",  "offset": 0x04, "size": 2, "format": "<h"},
+        {"name": "fixup_array_num",     "offset": 0x06, "size": 2, "format": "<h"},
+        {"name": "lsn",                 "offset": 0x08, "size": 8, "format": "<q"},
+        {"name": "sequence_num",        "offset": 0x10, "size": 2, "format": "<h"},
+        {"name": "hard_link_cnt",       "offset": 0x12, "size": 2, "format": "<h"},
+        {"name": "file_attr_offset",    "offset": 0x14, "size": 2, "format": "<h"},
+        {"name": "flag",                "offset": 0x16, "size": 2, "format": "<h"},
+        {"name": "mft_entry_real_size", "offset": 0x18, "size": 4, "format": "<i"},
+        {"name": "mft_entry_alloc_size", "offset": 0x1C, "size": 4, "format": "<i"},
+        {"name": "base_entry_file_ref", "offset": 0x20, "size": 8, "format": "<q"},
+        {"name": "next_attr_id",        "offset": 0x28, "size": 2, "format": "<h"},
+        {"name": "mft_num",             "offset": 0x2C, "size": 4, "format": "<i"},
+    ],
+    "COMMON_HEADER": [
+        {"name": "attr_type_id",        "offset": 0x00, "size": 4, "format": "<i"},
+        {"name": "attr_len",            "offset": 0x04, "size": 4, "format": "<i"},
+        {"name": "non-resident_flag",   "offset": 0x08, "size": 1, "format": "<b"},
+        {"name": "name_len",            "offset": 0x09, "size": 1, "format": "<b"},
+        {"name": "name_offset",         "offset": 0x0A, "size": 2, "format": "<h"},
+        {"name": "flag",                "offset": 0x0C, "size": 4, "format": "<i"},
+        {"name": "attr_id",             "offset": 0x0E, "size": 2, "format": "<h"},
+    ],
+    "RESIDENT_HEADER": [
+        {"name": "content_size", "offset": 0x00, "size": 4, "format": "<i"},
+        {"name": "content_offset", "offset": 0x04, "size": 2, "format": "<i"},
+        {"name": "idx_flag", "offset": 0x06, "size": 1, "format": "<i"},
+        {"name": "attr_name", "offset": 0x08, "size": 8, "format": "<i"},
+    ]
+}
+
+ATTRIBUTE = [
+    {"value": 0x10, "name": "$STANDARD_INFORMATION"},
+    {"value": 0x20, "name": "$ATTRIBUTE_LIST"},
+    {"value": 0x30, "name": "$FILE_NAME"},
+    {"value": 0x40, "name": "$OBJECT_ID"},
+    {"value": 0x50, "name": "$SECURITY_DESCRIPTOR"},
+    {"value": 0x60, "name": "$VOLUME_NAME"},
+    {"value": 0x70, "name": "$VOLUME_INFORMATION"},
+    {"value": 0x80, "name": "$DATA"},
+    {"value": 0x90, "name": "$INDEX_ROOT"},
+    {"value": 0xA0, "name": "$INDEX_ALLOCATION"},
+    {"value": 0xB0, "name": "$BITMAP"},
+    {"value": 0xC0, "name": "$REPARSE_POINT"},
+    {"value": 0xD0, "name": "$EA_INFORMATION"},
+    {"value": 0xE0, "name": "$EA"},
+    {"value": 0x100, "name": "$LOGGED_UTILITY_STREAM"},
+]
