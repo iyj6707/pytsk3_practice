@@ -153,6 +153,8 @@ class PytskUtil:
             except IOError:
                 pass
 
+
+# EWF class
 class EWFImgInfo(pytsk3.Img_Info):
     def __init__(self, ewf_handle):
         self._ewf_handle = ewf_handle
@@ -168,9 +170,3 @@ class EWFImgInfo(pytsk3.Img_Info):
 
     def get_size(self):
         return self._ewf_handle.get_media_size()
-
-
-def convert_time(ts):
-    if str(ts) == "0":
-        return ""
-    return dt.utcfromtimestamp(ts)

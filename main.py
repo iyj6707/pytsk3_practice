@@ -32,8 +32,8 @@ def get_cmd_args():
         formatter_class=argparse.ArgumentDefaultsHelpFormatter
     )
 
-    parser.add_argument("evidence_file",
-                        help="Evidence file path")
+    # parser.add_argument("evidence_file",
+    #                     help="Evidence file path")
 
     parser.add_argument("-c", "--csv",
                         dest="csv",
@@ -44,16 +44,6 @@ def get_cmd_args():
                         dest="db",
                         help="Extract to db file",
                         action="store_true")
-
-    parser.add_argument("-p",
-                        dest="partition_type",
-                        help="Partition Type",
-                        choices=("DOS", "GPT", "MAC", "SUN"))
-
-    parser.add_argument("-o", "--output",
-                        dest="output_path",
-                        help="Set output path",
-                        metavar="OUTPUT_PATH")
 
     parser.add_argument("-v", "--version",
                         dest="version",
@@ -67,11 +57,11 @@ def main():
     args = get_cmd_args()
     kwargs = vars(args)
 
-    # extract = util.PytskUtil(args.evidence_file)
-    # extract.extract_file(name='$MFT')
-    parse = parse_mft.ParseMFT('extract/$MFT')
-    parse.parse_mft()
-
+    extract = util.PytskUtil(args.evidence_file)
+    extract.extract_file(name='$MFT')
+    parse = parse_mft.Parse('extract/$MFT_extracted')
+    # data = parse.parse()
+    #
     # if args.output_path is None:
     #     output_path = '01.csv'
     # else:
