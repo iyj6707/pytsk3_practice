@@ -17,29 +17,29 @@ ATTR = [
 ]
 
 ENTRY_HEADER = [
-    {"name": "sig",                 "offset": 0x00,    "size": 4, "format": "4s"},       # signature
-    {"name": "fixup_arr_offset",    "offset": 0x04,    "size": 2, "format": "<H"},       # update sequenz offset
-    {"name": "fixup_arr_num",       "offset": 0x06,    "size": 2, "format": "<H"},       # update sequenz
-    {"name": "lsn",                 "offset": 0x08,    "size": 8, "format": "<Q"},       # update sequenz
-    {"name": "sequence_num",        "offset": 0x10,    "size": 2, "format": "<H"},       # update sequen
-    {"name": "hard_link_count",     "offset": 0x12,    "size": 2, "format": "<H"},       # Hard link Count
-    {"name": "file_attr_offset",    "offset": 0x14,    "size": 2, "format": "<H"},       # Offset to start of attributes
-    {"name": "flags",               "offset": 0x16,    "size": 2, "format": "<H"},       # Is_deleted
-    {"name": "real_size",           "offset": 0x18,    "size": 4, "format": "<I"},       # Amount of space used by $MFT
-    {"name": "alloc_size",          "offset": 0x1C,    "size": 4, "format": "<I"},       # Amount of space allocated for $MFT
-    {"name": "base_entry_file_ref", "offset": 0x20,    "size": 8, "format": "<Q"},       # $MFT Record number
-    {"name": "next_attr_id",        "offset": 0x28,    "size": 2, "format": "<H"},       # $MFT Record number
+    {"name": "sig",                 "offset": 0x00,    "size": 4, "format": "4s"},
+    {"name": "fixup_arr_offset",    "offset": 0x04,    "size": 2, "format": "<H"},
+    {"name": "fixup_arr_num",       "offset": 0x06,    "size": 2, "format": "<H"},
+    {"name": "lsn",                 "offset": 0x08,    "size": 8, "format": "<Q"},
+    {"name": "sequence_num",        "offset": 0x10,    "size": 2, "format": "<H"},
+    {"name": "hard_link_count",     "offset": 0x12,    "size": 2, "format": "<H"},
+    {"name": "file_attr_offset",    "offset": 0x14,    "size": 2, "format": "<H"},
+    {"name": "flags",               "offset": 0x16,    "size": 2, "format": "<H"},
+    {"name": "real_size",           "offset": 0x18,    "size": 4, "format": "<I"},
+    {"name": "alloc_size",          "offset": 0x1C,    "size": 4, "format": "<I"},
+    {"name": "base_entry_file_ref", "offset": 0x20,    "size": 8, "format": "<Q"},
+    {"name": "next_attr_id",        "offset": 0x28,    "size": 2, "format": "<H"},
     {"name": "mft_entry_num",       "offset": 0x3C,    "size": 4, "format": "<I"},
 ]
 
 COMMON_HEADER = [
-    {"name": "attr_type_id",    "offset": 0x00,   "size": 4, "format": "<I"},       # attribute ID
-    {"name": "attr_len",        "offset": 0x04,   "size": 4, "format": "<I"},       # attribute length
-    {"name": "non_res_flag",    "offset": 0x08,   "size": 1, "format": "<B"},       # resident/non resident (POSITION_FLAG)
-    {"name": "name_len",        "offset": 0x09,   "size": 1, "format": "<B"},        # attribute identifier
-    {"name": "name_offset",     "offset": 0x0A,   "size": 2, "format": "<H"},       # attribute identifier
-    {"name": "flags",           "offset": 0x0C,   "size": 2, "format": "<H"},      # attribute identifier
-    {"name": "attr_id",         "offset": 0x0E,   "size": 2, "format": "<H"},     # attribute identifier
+    {"name": "attr_type_id",    "offset": 0x00,   "size": 4, "format": "<I"},
+    {"name": "attr_len",        "offset": 0x04,   "size": 4, "format": "<I"},
+    {"name": "non_res_flag",    "offset": 0x08,   "size": 1, "format": "<B"},
+    {"name": "name_len",        "offset": 0x09,   "size": 1, "format": "<B"},
+    {"name": "name_offset",     "offset": 0x0A,   "size": 2, "format": "<H"},
+    {"name": "flags",           "offset": 0x0C,   "size": 2, "format": "<H"},
+    {"name": "attr_id",         "offset": 0x0E,   "size": 2, "format": "<H"},
 ]
 
 RES_HEADER = [
@@ -54,9 +54,9 @@ NON_RES_HEADER = [
     {"name": "run_list_end_vcn",        "offset": 0x08, "size": 8, "format": "<Q"},
     {"name": "run_list_offset",         "offset": 0x10, "size": 2, "format": "<H"},
     {"name": "compress_unit_size",      "offset": 0x12, "size": 2, "format": "<H"},
-    {"name": "attr_content_alloc_size", "offset": 0x18, "size": 8, "format": "<Q"},
-    {"name": "attr_content_real_size",  "offset": 0x20, "size": 8, "format": "<Q"},
-    {"name": "attr_content_init_size",  "offset": 0x28, "size": 8, "format": "<Q"},
+    {"name": "alloc_size",              "offset": 0x18, "size": 8, "format": "<Q"},
+    {"name": "real_size",               "offset": 0x20, "size": 8, "format": "<Q"},
+    {"name": "init_size",               "offset": 0x28, "size": 8, "format": "<Q"},
     {"name": "attr_name",               "offset": 0x30, "size": 0, "format": "s"},
 ]
 

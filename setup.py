@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 
 setup(
-    name='pytsk3_test',
+    name='lib',
     version='1.0.0',
     author='Im yeonjae',
     author_email='iyj6707@naver.com',
@@ -11,7 +11,7 @@ setup(
     packages=find_packages(),
     entry_points={
         "console_scripts": [
-            "coding_test = pytsk3_test.main:main"
+            "coding_test = lib.main:main"
         ]
     },
     classifiers=[

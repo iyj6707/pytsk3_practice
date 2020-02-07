@@ -3,21 +3,12 @@ import sys
 import argparse
 import logging
 
-from pytsk3_test import *
+from lib import *
 
 
 __author__ = "Im yeonjae"
-__date__ = "20200202"
+__date__ = "20200207"
 __description__ = "Practice for coding test"
-
-
-# logging configuration
-logger = logging.getLogger(__name__)
-logging.basicConfig(
-    format="%(asctime)s> [%(levelname)s][%(name)s][%(funcName)s()] %(message)s",
-    datefmt="%d/%m/%Y %H:%M:%S",
-    level=logging.INFO,
-)
 
 
 def get_cmd_args():
@@ -32,8 +23,9 @@ def get_cmd_args():
         formatter_class=argparse.ArgumentDefaultsHelpFormatter
     )
 
-    # parser.add_argument("evidence_file",
-    #                     help="Evidence file path")
+    parser.add_argument("-e", "--evidence",
+                        dest="evidence_file",
+                        help="Evidence file path")
 
     parser.add_argument("-c", "--csv",
                         dest="csv",
@@ -44,6 +36,10 @@ def get_cmd_args():
                         dest="db",
                         help="Extract to db file",
                         action="store_true")
+
+    parser.add_argument("-o",
+                        dest="output",
+                        help="Store output file in output path")
 
     parser.add_argument("-v", "--version",
                         dest="version",
@@ -57,10 +53,10 @@ def main():
     args = get_cmd_args()
     kwargs = vars(args)
 
-    extract = util.PytskUtil(args.evidence_file)
-    extract.extract_file(name='$MFT')
+    # ext = extract.PytskUtil(args.evidence_file)
+    # ext.extract_file(name='$MFT')
     parse = parse_mft.Parse('extract/$MFT_extracted')
-    # data = parse.parse()
+    data = parse.parse()
     #
     # if args.output_path is None:
     #     output_path = '01.csv'

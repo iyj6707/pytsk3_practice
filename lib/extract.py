@@ -1,8 +1,6 @@
-# -*- coding:utf-8 -*-
-
 import os
 import sys
-from datetime import datetime as dt
+import logging
 import pyewf
 import pytsk3
 
@@ -25,8 +23,7 @@ class PytskUtil:
                 os.path.isfile(self.evidence_file):
             self.img_object = self.get_img_object()
         else:
-            print("[-] Supplied input file {} does not exist or is not a "
-                  "file".format(self.evidence_file))
+            logging.error("Supplied input file {} does not exist or is not a file".format(self.evidence_file))
             sys.exit(1)
 
         # get volume information
@@ -45,10 +42,10 @@ class PytskUtil:
             self.evidence_type = 'ewf'
         else:
             self.evidence_type = 'raw'
-        print("The evidence type is {}".format(self.evidence_type))
+        logging.info("The evidence type is {}".format(self.evidence_type))
 
     def get_img_object(self):
-        print("[+] Opening {}".format(self.evidence_file))
+        logging.info("Opening {}".format(self.evidence_file))
         if self.evidence_type == "ewf":
             try:
                 filenames = pyewf.glob(self.evidence_file)
@@ -70,10 +67,10 @@ class PytskUtil:
             return volume_object
         except IOError:
             _, e, _ = sys.exc_info()
-            print("[-] Unable to read partition table:\n {}".format(e))
+            logging.error("Unable to read partition table:\n {}".format(e))
 
     def get_fs_info(self):
-        print("[+] Open the file system")
+        logging.info("Open the file system")
         fs_object = None
         if self.volume_object is not None:
             for part in self.volume_object:
@@ -94,7 +91,7 @@ class PytskUtil:
                 fs_object = pytsk3.FS_Info(self.img_object)
             except IOError:
                 _, e, _ = sys.exc_info()
-                print("[-] Unable to open FS:\n {}".format(e))
+                logging.error("Unable to open FS:\n {}".format(e))
         return fs_object
 
     def extract_file(self, name="", parent_path=None, dir_object=None):
@@ -123,7 +120,7 @@ class PytskUtil:
 
                 # Extract File
                 if file_name == name:
-                    print("[-] Extract file {}".format(file_name))
+                    logging.error("Extract file {}".format(file_name))
                     output_path = "./{}/{}".format("extract", '/'.join(parent_path))
                     if not os.path.exists(output_path):
                         os.makedirs(output_path)
@@ -131,7 +128,7 @@ class PytskUtil:
                     file_data = file_object.read_random(0, file_object.info.meta.size)
                     with open(output_path + file_name, 'wb') as f:
                         f.write(file_data)
-                    print("Extract success!")
+                    logging.info("Extract success!")
                     break
 
                 # Decide if file type is directory

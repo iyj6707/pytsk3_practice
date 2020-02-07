@@ -1,5 +1,5 @@
 import unittest
-from pytsk3_test import parse_mft
+from lib import parse_mft
 
 
 class CustomTests(unittest.TestCase):
